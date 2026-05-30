@@ -4,8 +4,9 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card } from '@/components/ui/Card';
-import { projects } from '@/data/projects';
+import { projects, Project } from '@/data/projects';
 import { ExternalLink, GitBranch } from 'lucide-react';
+import { ProjectModal } from '@/components/ui/ProjectModal';
 function ImageCarousel({ images, title }: { images: string[], title: string }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -37,6 +38,7 @@ function ImageCarousel({ images, title }: { images: string[], title: string }) {
         src={images[currentIndex]} 
         alt={`${title} - image ${currentIndex + 1}`} 
         fill 
+        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         className="object-cover transition-opacity duration-500" 
       />
       {images.length > 1 && (
@@ -61,12 +63,42 @@ function ImageCarousel({ images, title }: { images: string[], title: string }) {
 
 export default function ProjectsSection() {
   const [filter, setFilter] = useState<string>('All');
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const categories = ['All', ...Array.from(new Set(projects.map(p => p.category)))];
+  const getSortTime = (dateStr: string): number => {
+    if (!dateStr) return 0;
+    const startPart = dateStr.split(' - ')[0].trim();
+    const date = new Date(startPart + "-01");
+    return isNaN(date.getTime()) ? 0 : date.getTime();
+  };
+
+  const sortedProjects = [...projects].sort((a, b) => getSortTime(b.date) - getSortTime(a.date));
+
+  const categories = ['All', ...Array.from(new Set(sortedProjects.map(p => p.category)))];
 
   const filteredProjects = filter === 'All'
-    ? projects
-    : projects.filter(p => p.category === filter);
+    ? sortedProjects
+    : sortedProjects.filter(p => p.category === filter);
+
+  const formatSingleDate = (str: string): string => {
+    const trimmed = str.trim();
+    if (trimmed.toLowerCase() === 'present' || trimmed.toLowerCase() === 'sekarang') {
+      return 'Sekarang';
+    }
+    const date = new Date(trimmed + "-01");
+    if (isNaN(date.getTime())) {
+      return trimmed;
+    }
+    return date.toLocaleDateString('id-ID', { month: 'long', year: 'numeric' });
+  };
+
+  const formatDate = (dateStr: string) => {
+    if (!dateStr) return '';
+    if (dateStr.includes(' - ')) {
+      return dateStr.split(' - ').map(formatSingleDate).join(' - ');
+    }
+    return formatSingleDate(dateStr);
+  };
 
   return (
     <section id="projects" className="py-24 relative">
@@ -110,28 +142,30 @@ export default function ProjectsSection() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
               >
-                <Card className="h-full flex flex-col group" hoverEffect={true}>
+                <div onClick={() => setSelectedProject(project)} className="h-full cursor-pointer">
+                  <Card className="h-full flex flex-col group" hoverEffect={true}>
                   <div className="h-48 rounded-lg overflow-hidden mb-6 bg-navy-dark relative border border-white/10 flex items-center justify-center">
                     <div className="absolute inset-0">
                       <ImageCarousel images={project.images} title={project.title} />
                     </div>
                     <div className="absolute inset-0 bg-primary-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 pointer-events-none">
                       {project.githubUrl && (
-                        <a href={project.githubUrl} className="p-3 bg-navy-dark rounded-full text-white hover:text-primary-cyan transition-colors pointer-events-auto">
+                        <a href={project.githubUrl} onClick={(e) => e.stopPropagation()} target="_blank" rel="noreferrer" className="p-3 bg-navy-dark rounded-full text-white hover:text-primary-cyan transition-colors pointer-events-auto">
                           <GitBranch size={24} />
                         </a>
                       )}
                       {project.demoUrl && (
-                        <a href={project.demoUrl} className="p-3 bg-navy-dark rounded-full text-white hover:text-primary-cyan transition-colors pointer-events-auto">
+                        <a href={project.demoUrl} onClick={(e) => e.stopPropagation()} target="_blank" rel="noreferrer" className="p-3 bg-navy-dark rounded-full text-white hover:text-primary-cyan transition-colors pointer-events-auto">
                           <ExternalLink size={24} />
                         </a>
                       )}
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary-cyan transition-colors">
+                  <h3 className="text-xl font-bold text-white mb-1 group-hover:text-primary-cyan transition-colors">
                     {project.title}
                   </h3>
+                  <p className="text-xs font-mono text-primary-cyan mb-3">{formatDate(project.date)}</p>
 
                   <p className="text-gray-400 text-sm mb-6 flex-grow">
                     {project.description}
@@ -144,12 +178,20 @@ export default function ProjectsSection() {
                       </span>
                     ))}
                   </div>
-                </Card>
+                  </Card>
+                </div>
               </motion.div>
             ))}
           </AnimatePresence>
         </motion.div>
       </div>
+
+      {/* Project Modal */}
+      <ProjectModal 
+        project={selectedProject} 
+        isOpen={!!selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+      />
     </section>
   );
 }

@@ -81,7 +81,16 @@ export default function ContactSection() {
             transition={{ duration: 0.6 }}
           >
             <Card>
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6" onSubmit={(e) => {
+                e.preventDefault();
+                const name = (document.getElementById('name') as HTMLInputElement).value;
+                const email = (document.getElementById('email') as HTMLInputElement).value;
+                const message = (document.getElementById('message') as HTMLTextAreaElement).value;
+                
+                const subject = encodeURIComponent(`New Contact Message from ${name}`);
+                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+                window.location.href = `mailto:odingps77@gmail.com?subject=${subject}&body=${body}`;
+              }}>
                 <div>
                   <label htmlFor="name" className="block text-sm font-mono text-gray-400 mb-2">Name</label>
                   <input

@@ -48,7 +48,7 @@ export default function Navbar() {
       <motion.nav
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          isScrolled ? 'py-4 glass' : 'py-6 bg-transparent'
+          isScrolled ? 'py-4 backdrop-blur-md' : 'py-6 bg-transparent'
         )}
         initial={{ y: -100 }}
         animate={{ y: 0 }}

@@ -3,8 +3,10 @@ export interface Project {
   title: string;
   description: string;
   category: 'SCADA' | 'PLC' | 'IoT' | 'Software' | 'Dashboard' | 'Integration';
+  date: string; // Format: YYYY-MM
   techStack: string[];
   images: string[];
+  responsibilities?: string[];
   githubUrl?: string;
   demoUrl?: string;
 }
@@ -12,10 +14,20 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 'silo-dryer-padang',
-    title: 'Silo-Dryer Project | Padang',
+    title: 'Silo-Dryer Project | Charoen Pokphand Indonesia Maros',
     description:
-      'Developed PLC programs for automatic weight batching, intake-dryer-silo routing, and interlocking. Designed SCADA systems for real-time control, visualization, and automated reporting. Engineered network architectures and integrated platforms with databases.',
+      'Automation and integration project for silo and dryer operations to improve material handling efficiency, production visibility, and process reliability.',
+    responsibilities: [
+      'Designed PLC logic for automatic weight batching and process interlocking',
+      'Developed intake-dryer-silo automatic routing system',
+      'Created SCADA system for real-time monitoring and control',
+      'Implemented alarm, trend, and reporting features on SCADA',
+      'Integrated PLC and SCADA systems with SQL databases',
+      'Designed industrial network architecture and communication infrastructure',
+      'Performed system commissioning, troubleshooting, and optimization',
+    ],
     category: 'Integration',
+    date: '2024-05',
     techStack: [
       'PLC Programming',
       'SCADA',
@@ -27,10 +39,20 @@ export const projects: Project[] = [
 
   {
     id: 'feedmill-padang',
-    title: 'Feedmill Project | Padang',
+    title: 'Feedmill Project | Charoen Pokphand Indonesia Padang',
     description:
-      'Developed PLC logic for automatic routing of intake-hammermill-pelletmill-packing and VFD/VSD control. Implemented SCADA systems for continuous monitoring and created real-time dashboards using Node-RED and Grafana.',
+      'Automation project for feedmill production processes covering intake, grinding, pelleting, and packing systems with centralized monitoring and operational dashboards.',
+    responsibilities: [
+      'Developed PLC logic for automatic routing between production processes',
+      'Configured VFD/VSD control for process equipment and motors',
+      'Designed SCADA system for plant monitoring and operation control',
+      'Created production dashboards using Node-RED and Grafana',
+      'Integrated PLC data with SQL databases for reporting and analytics',
+      'Implemented alarm and operational monitoring systems',
+      'Supported system testing, commissioning, and troubleshooting',
+    ],
     category: 'SCADA',
+    date: '2024-03',
     techStack: [
       'PLC Logic',
       'SCADA',
@@ -45,23 +67,48 @@ export const projects: Project[] = [
     id: 'automatic-bulk-sampler',
     title: 'Automatic Bulk Sampler | Multiple Locations',
     description:
-      'Supervised installation and optimized instrumentation across 6 locations (Demak, Semarang, Padang, Krian, Cirebon, Gorontalo). Updated PLC/SCADA programs and integrated sampler automation with databases and networks.',
+      'Instrumentation and automation standardization project for automatic bulk sampler systems deployed across multiple factory locations.',
+    responsibilities: [
+      'Supervised instrumentation installation at multiple factory locations',
+      'Performed calibration and validation of field instruments',
+      'Updated PLC and SCADA programs for sampler automation systems',
+      'Integrated sampler systems with databases and plant networks',
+      'Conducted system testing and commissioning activities',
+      'Provided troubleshooting and system performance optimization',
+      'Coordinated implementation standards across all project sites',
+    ],
     category: 'PLC',
+    date: '2023-11',
     techStack: [
       'Instrumentation',
       'PLC/SCADA',
       'Calibration',
       'System Integration',
     ],
-    images: ['/projects/ABS.jpg'],
+    images: [
+      '/projects/ABS_1.jpg',
+      '/projects/ABS_2.png',
+      '/projects/ABS_3.jpeg',
+      '/projects/ABS_4.jpeg'
+    ],
   },
 
   {
     id: 'production-dashboard-system',
     title: 'Production Dashboard System',
     description:
-      'Designed and developed real-time production dashboards for monitoring machine status, production performance, alarms, and operational KPIs. Integrated PLC, SQL databases, Node-RED, and Grafana to provide centralized plant visibility and reporting.',
+      'Centralized monitoring platform for real-time production visibility, machine performance tracking, and operational KPI analysis.',
+    responsibilities: [
+      'Designed and developed real-time production dashboards',
+      'Integrated PLC data with SQL Server databases',
+      'Built data processing workflows using Node-RED',
+      'Developed visualization and analytics dashboards in Grafana',
+      'Implemented machine status, alarm, and KPI monitoring systems',
+      'Created REST API integration for external data access',
+      'Optimized dashboard performance and data reliability',
+    ],
     category: 'Dashboard',
+    date: '2024-02 - 2025-05',
     techStack: [
       'Node-RED',
       'Grafana',
@@ -81,8 +128,18 @@ export const projects: Project[] = [
     id: 'power-meter-dashboard',
     title: 'Power Meter Monitoring Dashboard',
     description:
-      'Built a real-time power monitoring dashboard for electrical systems and cubicles. Integrated power meters with SCADA and database systems to visualize voltage, current, power consumption, frequency, and energy usage analytics.',
+      'Energy monitoring system designed to provide real-time electrical parameter visualization and power consumption analysis for industrial facilities.',
+    responsibilities: [
+      'Integrated power meters using Modbus TCP/IP communication',
+      'Developed real-time electrical monitoring dashboards in Grafana',
+      'Collected and stored electrical data into SQL databases',
+      'Monitored voltage, current, power, frequency, and energy consumption',
+      'Designed dashboard layouts for electrical cubicles and distribution systems',
+      'Implemented historical trends and energy usage analytics',
+      'Supported troubleshooting and system validation activities',
+    ],
     category: 'Dashboard',
+    date: '2026-05',
     techStack: [
       'Grafana',
       'Modbus TCP/IP',
@@ -101,8 +158,18 @@ export const projects: Project[] = [
     id: 'plc-protocol-bridge',
     title: 'PLC Protocol Bridge Application',
     description:
-      'Developed a protocol bridge application for communication between different industrial devices and platforms. Implemented data exchange between PLCs, OPC servers, databases, and external applications using industrial communication protocols and REST APIs.',
+      'Industrial communication middleware application designed to bridge data exchange between PLCs, OPC servers, databases, and external systems.',
+    responsibilities: [
+      'Developed industrial protocol bridge applications using Python',
+      'Implemented communication between PLCs and OPC DA/UA servers',
+      'Integrated Modbus TCP devices with external applications',
+      'Built REST API services for data exchange and system integration',
+      'Developed real-time data logging and synchronization systems',
+      'Integrated industrial data with SQL Server databases',
+      'Performed communication troubleshooting and system optimization',
+    ],
     category: 'Software',
+    date: '2026-03',
     techStack: [
       'Python',
       'OPC DA/UA',
@@ -116,4 +183,126 @@ export const projects: Project[] = [
       '/projects/PLC_Bridge_2.png',
     ],
   },
+
+  {
+    id: 'medicine-weighing-web-interface',
+    title: 'Medicine Weighing Web Interface System',
+    description:
+      'Developed a barcode verification and weighing system to prevent operator mistakes during medicine pouring processes by ensuring the medicine formula matches the active feed formula before dispensing.',
+    responsibilities: [
+      'Developed a web-based interface using Python for weighing and verification processes',
+      'Designed database architecture for historical weighing and transaction records',
+      'Integrated the system with Bench Scale BBA231-3CC150A/S using RS232 serial communication',
+      'Implemented barcode verification to validate feed and medicine formula matching',
+      'Integrated the system with printers for automatic weighing report printing',
+      'Performed system testing and validation to improve operational safety and accuracy',
+    ],
+    category: 'Software',
+    date: '2026-05',
+    techStack: [
+      'Python',
+      'Web Interface',
+      'SQL Database',
+      'RS232 Communication',
+      'Barcode System',
+      'Industrial Integration',
+    ],
+    images: [
+      '/projects/Medicine_Weighing_1.png',
+      '/projects/Medicine_Weighing_2.png'
+    ],
+  },
+
+  {
+    id: 'feedmill-maros',
+    title: 'New Feedmill Factory Project | Maros',
+    description:
+      'Automation and control system development project for a new feedmill factory to support production expansion and increasing market demand.',
+    responsibilities: [
+      'Designed control system architecture for the silo-dryer area',
+      'Developed industrial network topology for silo-dryer operations',
+      'Developed PLC, SCADA, and database systems for silo-dryer automation',
+      'Coordinated automation scope and technical discussions with FAMSUN vendors from China',
+      'Supervised field installation activities for automation and control systems',
+      'Performed machine commissioning together with vendors, project teams, and production teams',
+      'Integrated automation systems with SAP ERP systems to ensure reliable data communication',
+      'Collaborated with cross-functional teams to ensure successful project execution and startup',
+    ],
+    category: 'Integration',
+    date: '2025-10 - Present',
+    techStack: [
+      'PLC Programming',
+      'SCADA',
+      'Industrial Networking',
+      'Database Integration',
+      'SAP Integration',
+      'System Commissioning',
+    ],
+    images: [
+      '/projects/Maros_Feedmill_1.png',
+      '/projects/Maros_Feedmill_2.png',
+      '/projects/Maros_Feedmill_3.png',
+    ],
+  },
+
+  {
+    id: 'auto-moisture-static-sampling',
+    title: 'Auto Moisture Static Sampling for Dryer Process | Makassar',
+    description:
+      'Automation project for real-time corn moisture sampling and monitoring in dryer processes to replace manual sampling methods and improve process efficiency, data accuracy, and operational visibility.',
+    responsibilities: [
+      'Developed PLC programs for automatic sampling, moisture scanning, cleaning, and purging sequences',
+      'Designed and developed SCADA interfaces using EcoStruxure Machine SCADA Expert',
+      'Integrated PLC systems with Hydronix Hydro-Mix HMXT-01 sensors using Modbus RTU over TCP communication via ZLAN 5143D',
+      'Implemented real-time moisture monitoring and process visualization systems',
+      'Integrated moisture reading data with databases for SAP transactions and reporting purposes',
+      'Performed system testing, troubleshooting, and process optimization',
+    ],
+    category: 'Integration',
+    date: '2025-08',
+    techStack: [
+      'PLC Programming',
+      'EcoStruxure Machine SCADA Expert',
+      'Modbus RTU over TCP',
+      'Hydronix Hydro-Mix HMXT-01',
+      'SQL Database',
+      'SAP Integration',
+    ],
+    images: [
+      '/projects/Auto_Moisture_Static_1.jpeg',
+      '/projects/Auto_Moisture_Static_2.png',
+      '/projects/Auto_Moisture_Static_3.png',
+      '/projects/Auto_Moisture_Static_4.png'
+    ],
+  },
+
+  {
+    id: 'mobile-auto-moisture-sampler',
+    title: 'Mobile Auto Moisture Sampler | Padang',
+    description:
+      'Automation project for moisture sampling during corn unloading processes to improve sampling accuracy, reduce manual recording errors, and accelerate operational processes.',
+    responsibilities: [
+      'Developed PLC programs using Schneider M221 for automatic sampling, moisture scanning, cleaning, and purging sequences',
+      'Integrated PLC processes with VB.NET-based applications for sample data recording and monitoring',
+      'Coordinated and supervised electrical, mechanical, and network installation activities with project teams',
+      'Performed testing and commissioning activities together with Quality Control teams',
+      'Validated system performance to ensure compliance with operational and quality control standards',
+      'Supported troubleshooting and system optimization during implementation',
+    ],
+    category: 'PLC',
+    date: '2025-05',
+    techStack: [
+      'Schneider M221',
+      'PLC Programming',
+      'VB.NET',
+      'Moisture Monitoring',
+      'Industrial Automation',
+      'System Commissioning',
+    ],
+    images: [
+      '/projects/Mobile_Moisture_1.jpeg',
+      '/projects/Mobile_Moisture_2.png'
+    ],
+  },
+
 ];

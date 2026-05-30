@@ -20,6 +20,7 @@ export default function HeroSection() {
             src="/images/Foto_Profil.jpg" 
             alt="Oding Panji Syahdana" 
             fill 
+            sizes="(max-width: 768px) 128px, 160px"
             className="object-cover"
             priority
           />
@@ -69,11 +70,13 @@ export default function HeroSection() {
             <Briefcase className="mr-2 h-5 w-5" />
             View Projects
           </Button>
-          <Button variant="outline">
-            <FileText className="mr-2 h-5 w-5" />
-            Download CV
-          </Button>
-          <Button variant="ghost" onClick={() => document.getElementById('contact')?.scrollIntoView()}>
+          <a href="/Oding_Panji_Syahdana_CV.pdf" download="Oding_Panji_Syahdana_CV.pdf">
+            <Button variant="outline">
+              <FileText className="mr-2 h-5 w-5" />
+              Download CV
+            </Button>
+          </a>
+          <Button variant="ghost" onClick={() => window.location.href = 'mailto:odingps77@gmail.com'}>
             <Mail className="mr-2 h-5 w-5" />
             Contact Me
           </Button>
@@ -85,7 +88,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center"
       >
         <span className="text-gray-500 text-sm mb-2 font-mono">SCROLL</span>
         <div className="w-px h-12 bg-gradient-to-b from-primary-cyan to-transparent"></div>

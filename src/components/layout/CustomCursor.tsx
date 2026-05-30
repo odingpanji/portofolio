@@ -6,8 +6,11 @@ import { motion } from 'framer-motion';
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -35,6 +38,8 @@ export default function CustomCursor() {
     };
   }, []);
 
+  if (isTouchDevice) return null;
+
   return (
     <>
       <motion.div
@@ -52,7 +57,7 @@ export default function CustomCursor() {
           x: mousePosition.x - 20,
           y: mousePosition.y - 20,
           scale: isHovering ? 1.5 : 1,
-          backgroundColor: isHovering ? 'rgba(88, 182, 238, 0.1)' : 'transparent',
+          backgroundColor: isHovering ? 'rgba(88, 182, 238, 0.1)' : 'rgba(88, 182, 238, 0)',
         }}
         transition={{ type: 'tween', ease: 'easeOut', duration: 0.2 }}
       />
