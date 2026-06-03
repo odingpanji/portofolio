@@ -67,10 +67,11 @@ export const projects: Project[] = [
       'VFD/VSD',
     ],
     images: [
-      '/projects/Feedmill.png',
+      '/projects/Feedmill_1.png',
       '/projects/Feedmill_2.jpg',
       '/projects/Feedmill_3.jpeg',
-      '/projects/Feedmill_4.jpeg'
+      '/projects/Feedmill_4.jpeg',
+      '/projects/Feedmill_5.jpg'
     ],
   },
 
@@ -99,14 +100,15 @@ export const projects: Project[] = [
     images: [
       '/projects/ABS_1.jpg',
       '/projects/ABS_2.png',
-      '/projects/ABS_3.jpeg',
-      '/projects/ABS_4.jpeg'
+      '/projects/ABS_3.png',
+      '/projects/ABS_4.png',
+      '/projects/ABS_5.jpg'
     ],
   },
 
   {
-    id: 'production-dashboard-system',
-    title: 'Production Dashboard System',
+    id: 'dashboard-dryer-system',
+    title: 'Dashboard For Dryer System',
     description:
       'Centralized monitoring platform for real-time production visibility, machine performance tracking, and operational KPI analysis.',
     responsibilities: [
@@ -171,7 +173,7 @@ export const projects: Project[] = [
     id: 'plc-protocol-bridge',
     title: 'PLC Protocol Bridge Application',
     description:
-      'Industrial communication middleware application designed to bridge data exchange between PLCs, OPC servers, databases, and external systems.',
+      'Industrial communication middleware application designed to bridge data exchange between PLCs, OPC servers, and external systems.',
     responsibilities: [
       'Developed industrial protocol bridge applications using Python',
       'Implemented communication between PLCs and OPC DA/UA servers',
@@ -254,7 +256,9 @@ export const projects: Project[] = [
     images: [
       '/projects/Maros_Feedmill_1.png',
       '/projects/Maros_Feedmill_2.png',
-      '/projects/Maros_Feedmill_3.png',
+      '/projects/Maros_Feedmill_3.jpg',
+      '/projects/Maros_Feedmill_4.png',
+      '/projects/Maros_Feedmill_5.jpg'
     ],
   },
 
@@ -314,7 +318,9 @@ export const projects: Project[] = [
     ],
     images: [
       '/projects/Mobile_Moisture_1.jpeg',
-      '/projects/Mobile_Moisture_2.png'
+      '/projects/Mobile_Moisture_2.png',
+      '/projects/Mobile_Moisture_3.jpg',
+      '/projects/Mobile_Moisture_4.jpg'
     ],
   },
 
@@ -346,8 +352,9 @@ export const projects: Project[] = [
     ],
     images: [
       '/projects/WWTP_1.png',
-      '/projects/WWTP_2.png'
-
+      '/projects/WWTP_2.png',
+      '/projects/WWTP_3.jpg',
+      '/projects/WWTP_4.jpg'
     ],
   },
 
