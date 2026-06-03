@@ -13,7 +13,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 'silo-dryer-padang',
+    id: 'silo-dryer-maros',
     title: 'Silo-Dryer Project | Charoen Pokphand Indonesia Maros',
     description:
       'Automation and integration project for silo and dryer operations to improve material handling efficiency, production visibility, and process reliability.',
@@ -34,7 +34,13 @@ export const projects: Project[] = [
       'Networking',
       'Database Integration',
     ],
-    images: ['/projects/Silo_Dryer.png', '/projects/Silo_Dryer_2.jpg'],
+    images: [
+      '/projects/Silo_Dryer_1.png',
+      '/projects/Silo_Dryer_2.jpg',
+      '/projects/Silo_Dryer_3.jpg',
+      '/projects/Silo_Dryer_4.png',
+      '/projects/Silo_Dryer_5.jpg'
+    ],
   },
 
   {
@@ -60,7 +66,12 @@ export const projects: Project[] = [
       'Grafana',
       'VFD/VSD',
     ],
-    images: ['/projects/Feedmill.png', '/projects/Feedmill_2.jpg'],
+    images: [
+      '/projects/Feedmill.png',
+      '/projects/Feedmill_2.jpg',
+      '/projects/Feedmill_3.jpeg',
+      '/projects/Feedmill_4.jpeg'
+    ],
   },
 
   {
@@ -151,6 +162,8 @@ export const projects: Project[] = [
     images: [
       '/projects/Power_Meter_1.png',
       '/projects/Power_Meter_2.png',
+      '/projects/Power_Meter_3.png',
+      '/projects/Power_Meter_4.png'
     ],
   },
 
@@ -186,7 +199,7 @@ export const projects: Project[] = [
 
   {
     id: 'medicine-weighing-web-interface',
-    title: 'Medicine Weighing Web Interface System',
+    title: 'Medicine Weighing and Verification System',
     description:
       'Developed a barcode verification and weighing system to prevent operator mistakes during medicine pouring processes by ensuring the medicine formula matches the active feed formula before dispensing.',
     responsibilities: [
@@ -215,7 +228,7 @@ export const projects: Project[] = [
 
   {
     id: 'feedmill-maros',
-    title: 'New Feedmill Factory Project | Maros',
+    title: 'New Feedmill Factory Project | Charoen Pokphand Indonesia Maros',
     description:
       'Automation and control system development project for a new feedmill factory to support production expansion and increasing market demand.',
     responsibilities: [
@@ -247,7 +260,7 @@ export const projects: Project[] = [
 
   {
     id: 'auto-moisture-static-sampling',
-    title: 'Auto Moisture Static Sampling for Dryer Process | Makassar',
+    title: 'Auto Moisture Static Sampling for Dryer Process | Charoen Pokphand Indonesia Makassar',
     description:
       'Automation project for real-time corn moisture sampling and monitoring in dryer processes to replace manual sampling methods and improve process efficiency, data accuracy, and operational visibility.',
     responsibilities: [
@@ -278,7 +291,7 @@ export const projects: Project[] = [
 
   {
     id: 'mobile-auto-moisture-sampler',
-    title: 'Mobile Auto Moisture Sampler | Padang',
+    title: 'Mobile Auto Moisture Sampler | Charoen Pokphand Indonesia Padang',
     description:
       'Automation project for moisture sampling during corn unloading processes to improve sampling accuracy, reduce manual recording errors, and accelerate operational processes.',
     responsibilities: [
@@ -302,6 +315,71 @@ export const projects: Project[] = [
     images: [
       '/projects/Mobile_Moisture_1.jpeg',
       '/projects/Mobile_Moisture_2.png'
+    ],
+  },
+
+  {
+    id: 'wastewater-treatment-automation',
+    title: 'Wastewater Treatment Plant Automation | Charoen Pokphand Indonesia Padang',
+    description:
+      'Automation project for wastewater treatment operations aimed at replacing manual processes with an automated control system, improving operational efficiency, process consistency, and environmental compliance.',
+    responsibilities: [
+      'Developed PLC programs for wastewater treatment process automation, including wastewater transfer, pH stabilization, chemical dosing, and final discharge sequences',
+      'Designed and developed a web-based SCADA system using Python, Flask, and Dash for real-time monitoring and control',
+      'Integrated PLC systems with LUTRON PPH-2108 pH sensors using Modbus RTU over TCP communication via ZLAN 5143D',
+      'Implemented automatic pH monitoring and chemical dosing control to maintain wastewater quality standards',
+      'Developed event and alarm logging systems for operational traceability and reporting purposes',
+      'Integrated process data and alarm history with databases for reporting and analysis',
+      'Performed system testing, commissioning, troubleshooting, and process optimization',
+    ],
+    category: 'SCADA',
+    date: '2024-10',
+    techStack: [
+      'PLC Programming',
+      'Python',
+      'Flask',
+      'Dash',
+      'Modbus RTU over TCP',
+      'LUTRON PPH-2108',
+      'SQL Database',
+      'Web-Based SCADA',
+    ],
+    images: [
+      '/projects/WWTP_1.png',
+      '/projects/WWTP_2.png'
+
+    ],
+  },
+
+  {
+    id: 'production-videotron-information-display',
+    title: 'Production Videotron Information System | Charoen Pokphand Indonesia Padang',
+    description:
+      'Real-time production information display system developed to improve synchronization between medicine dosing activities and mixer batching operations while providing production visibility for packing and palletizing processes.',
+    responsibilities: [
+      'Designed industrial network architecture and communication topology for the production information display system',
+      'Supervised videotron installation and network infrastructure deployment',
+      'Conducted system testing, validation, and operational trials prior to production implementation',
+      'Integrated real-time production data from SCADA systems into SQL databases',
+      'Developed data synchronization mechanisms between SCADA systems and videotron displays',
+      'Implemented real-time visualization of active feed formulas and production status for packing operations',
+      'Collaborated with production teams to ensure the displayed information met operational requirements',
+    ],
+    category: 'Integration',
+    date: '2024-12',
+    techStack: [
+      'SCADA Integration',
+      'SQL Database',
+      'Industrial Networking',
+      'Real-time Data Integration',
+      'Videotron System',
+      'Production Monitoring',
+    ],
+    images: [
+      '/projects/Videotron_1.png',
+      '/projects/Videotron_2.jpg',
+      '/projects/Videotron_3.jpg',
+      '/projects/Videotron_4.jpg'
     ],
   },
 

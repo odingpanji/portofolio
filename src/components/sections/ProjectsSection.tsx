@@ -9,22 +9,25 @@ import { ExternalLink, GitBranch } from 'lucide-react';
 import { ProjectModal } from '@/components/ui/ProjectModal';
 function ImageCarousel({ images, title }: { images: string[], title: string }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [previousIndex, setPreviousIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    if (!images || images.length <= 1 || !isHovered) {
-      if (!isHovered && currentIndex !== 0) {
-        setCurrentIndex(0); // Reset to first image when not hovering
-      }
-      return;
-    }
+    if (!images || images.length <= 1) return;
     
-    // Cycle images every 1.5 seconds when hovered
+    // Pause auto-scroll when hovered
+    if (isHovered) return;
+    
+    // Cycle images every 5 seconds
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 1500);
+      setCurrentIndex((prev) => {
+        setPreviousIndex(prev);
+        return (prev + 1) % images.length;
+      });
+    }, 5000);
+    
     return () => clearInterval(interval);
-  }, [images, isHovered, currentIndex]);
+  }, [images, isHovered]);
 
   if (!images || images.length === 0) return null;
 
@@ -34,13 +37,25 @@ function ImageCarousel({ images, title }: { images: string[], title: string }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Image 
-        src={images[currentIndex]} 
-        alt={`${title} - image ${currentIndex + 1}`} 
-        fill 
-        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        className="object-cover transition-opacity duration-500" 
-      />
+      <div className="absolute inset-0 overflow-hidden">
+        {images.map((src, idx) => (
+          <Image 
+            key={idx}
+            src={src} 
+            alt={`${title} - image ${idx + 1}`} 
+            fill 
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            priority={idx === 0}
+            className={`object-cover transition-opacity duration-1000 ease-in-out absolute inset-0 ${
+              idx === currentIndex 
+                ? 'opacity-100 z-10' 
+                : idx === previousIndex 
+                  ? 'opacity-100 z-0' 
+                  : 'opacity-0 z-0'
+            }`} 
+          />
+        ))}
+      </div>
       {images.length > 1 && (
         <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2 z-20">
           {images.map((_, idx) => (
@@ -48,6 +63,7 @@ function ImageCarousel({ images, title }: { images: string[], title: string }) {
               key={idx}
               onClick={(e) => {
                 e.preventDefault();
+                setPreviousIndex(currentIndex);
                 setCurrentIndex(idx);
               }}
               className={`h-1.5 rounded-full transition-all duration-300 ${

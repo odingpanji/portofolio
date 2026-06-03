@@ -7,11 +7,12 @@ import { Cpu, Server, MonitorSmartphone, Database, ArrowRight, Building2, X } fr
 
 export default function ArchitectureSection() {
   const nodes = [
-    { icon: Cpu, label: 'Field Devices & PLC', desc: 'Modbus / OPC', techList: ['Siemens S7', 'Allen-Bradley', 'Schneider M580', 'Schneider M221', 'Omron', 'Modbus TCP/RTU', 'OPC UA/DA', 'Hydronix Sensors'] },
-    { icon: Server, label: 'SCADA / Edge Server', desc: 'Data Aggregation', techList: ['EcoStruxure Machine SCADA Expert', 'AVEVA InTouch', 'Node-RED', 'Ignition'] },
-    { icon: Database, label: 'Database', desc: 'SQL / InfluxDB', techList: ['MS SQL Server', 'PostgreSQL', 'MySQL', 'InfluxDB'] },
-    { icon: MonitorSmartphone, label: 'Web Dashboard', desc: 'React / Vue', techList: ['Grafana', 'React.js', 'Next.js', 'Tailwind CSS'] },
-    { icon: Building2, label: 'ERP System', desc: 'SAP / REST API', techList: ['SAP ERP', 'REST API', 'Python Integration', 'VB.NET'] },
+    { icon: Cpu, label: 'Field Devices & Instrumentation', desc: 'Sensors / Actuators', techList: ['IFM', 'Endress+Hauser', 'Mettler Toledo', 'Laumass', 'Autonics', 'Vega'] },
+    { icon: Cpu, label: 'PLC & Control Systems', desc: 'Control Logic', techList: ['Schneider M580', 'Schneider M241/M221', 'Siemens S7-1200/1500', 'Allen-Bradley', 'OPC UA', 'Modbus RTU/TCP', 'Profinet', 'EtherNet/IP'] },
+    { icon: Server, label: 'SCADA / HMI', desc: 'Monitoring & Control', techList: ['Machine SCADA Expert', 'AVEVA InTouch', 'AVEVA Edge', 'Vijeo Designer'] },
+    { icon: Database, label: 'Database', desc: 'SQL / Historian', techList: ['SQL Server', 'MySQL', 'InfluxDB', 'PostgreSQL'] },
+    { icon: MonitorSmartphone, label: 'Web Dashboard', desc: 'Visualization', techList: ['Grafana', 'Node-RED', 'Flask', 'Vue.js'] },
+    { icon: Building2, label: 'ERP & Integration', desc: 'SAP / API', techList: ['SAP ERP', 'REST API'] }
   ];
 
   const [activeNode, setActiveNode] = useState<typeof nodes[0] | null>(null);
@@ -29,7 +30,7 @@ export default function ArchitectureSection() {
           <h2 className="text-3xl md:text-5xl font-bold font-mono mb-4 text-white">
             <span className="text-primary-cyan">04.</span> System Architecture
           </h2>
-          <div className="w-24 h-1 bg-primary-cyan mx-auto rounded-full neon-border-cyan mb-8"></div>
+
           <p className="text-gray-400 max-w-2xl mx-auto">
             Visualizing the data flow from physical field devices to high-level enterprise dashboards.
           </p>
@@ -96,7 +97,7 @@ export default function ArchitectureSection() {
               >
                 <X size={20} />
               </button>
-              
+
               <div className="flex items-center gap-4 mb-6 pr-8">
                 <div className="p-3 bg-navy-dark rounded-xl border border-primary-cyan/20">
                   <activeNode.icon className="w-8 h-8 text-primary-cyan" />
@@ -106,7 +107,7 @@ export default function ArchitectureSection() {
                   <p className="text-sm font-mono text-primary-cyan">{activeNode.desc}</p>
                 </div>
               </div>
-              
+
               <h4 className="text-sm font-bold text-gray-400 mb-3 uppercase tracking-wider">Technologies Used</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {activeNode.techList.map((tech, idx) => (

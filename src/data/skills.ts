@@ -7,7 +7,7 @@ export const skillCategories: SkillCategory[] = [
   {
     name: 'PLC Programming',
     skills: [
-      { name: 'Schneider M580/M241', level: 95 },
+      { name: 'Schneider M580/M241/M221', level: 95 },
       { name: 'Siemens S7-1200/1500', level: 90 },
       { name: 'AB CompactLogix 5380', level: 85 },
       { name: 'Omron & Mitsubishi', level: 85 },
@@ -16,10 +16,10 @@ export const skillCategories: SkillCategory[] = [
   {
     name: 'SCADA & HMI',
     skills: [
-      { name: 'EcoStruxure Machine SCADA', level: 90 },
+      { name: 'EcoStruxure Machine SCADA Expert', level: 90 },
       { name: 'AVEVA InTouch / Edge', level: 85 },
-      { name: 'Vijeo Designer', level: 90 },
-      { name: 'Dashboard Design', level: 85 },
+      { name: 'Vijeo Designer, Machine Expert', level: 90 },
+      { name: 'GX-Designer', level: 85 },
     ],
   },
   {
@@ -35,7 +35,7 @@ export const skillCategories: SkillCategory[] = [
     name: 'Industrial Network',
     skills: [
       { name: 'Modbus TCP/RTU', level: 95 },
-      { name: 'EtherNet/IP', level: 90 },
+      { name: 'EtherNet/IP, Profinet', level: 90 },
       { name: 'OPC DA/UA', level: 85 },
       { name: 'Instrumentation & Wiring', level: 90 },
     ],
